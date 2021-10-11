@@ -37,6 +37,8 @@ COPY . /app
 RUN npm install --silent --global npm@latest && /usr/local/bin/npm install --silent && npx gulp build
 
 RUN pipenv install --system --dev --deploy && rm -rf ~/.cache/
+RUN apt-get -q -y install dos2unix
+RUN dos2unix *.sh
 
 EXPOSE 80
 
